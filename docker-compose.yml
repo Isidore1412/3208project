@@ -30,12 +30,12 @@ services:
                 environment:
                         - NODE_ENV=production
                 volumes:
-                        - ./app:/home/node/app
+                        - ./nodejs/app:/home/node/app
                 ports:  
                         - 8888:8888
                 networks:
                         - myproject
-                command: "npm start"
+                command: bash -c "npm start && npm install -g pm2 --no-install-recommends --no-install-suggests"
 
         nginx:
                 image: nginx:latest
@@ -46,7 +46,7 @@ services:
                 depends_on:
                         - db
                         - redis
-                        - node
+                        - nodejs
                 ports:
                         - 80:80
                 networks:
