@@ -5,10 +5,10 @@ services:
                 image: mariadb:latest
                 #restart: always
                 environment:
-                        MYSQL_ROOT_PASSWORD: Root123
+                        MYSQL_ROOT_PASSWORD: admin_123
                         MYSQL_DATABASE: project
-                        MYSQL_USER: pro
-                        MYSQL_PASSWORD: pro
+                        MYSQL_USER: wang
+                        MYSQL_PASSWORD: wang
                 ports: 
                         - 3306:3306
                 networks:
@@ -26,16 +26,16 @@ services:
                 image: node:latest
                 user: "node"
                 #restart: always
-                working_dir: /home/node/app
+                working_dir: /usr/local/service
                 environment:
                         - NODE_ENV=production
                 volumes:
-                        - ./nodejs/app:/home/node/app
+                        - ./nodejs:/usr/local/service
                 ports:  
                         - 8888:8888
                 networks:
                         - myproject
-                command: bash -c "npm start && npm install -g pm2 --no-install-recommends --no-install-suggests"
+                command: "npm start"
 
         nginx:
                 image: nginx:latest
