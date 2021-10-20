@@ -40,7 +40,7 @@ services:
                         - 8080:8080
                 networks: 
                         - myproject
-                comand: bash -c "pecl install mongodb && echo /usr/local/etc/php/conf.d/docker-php-ext-mongodb.ini"
+                #command: bash -c "pecl install mongodb && echo /usr/local/etc/php/conf.d/docker-php-ext-mongodb.ini"
         nginx:
                 image: nginx
                 restart: always
