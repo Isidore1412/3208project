@@ -4,12 +4,12 @@ $username = "php";
 $password = "php";
 
 // Create connection
-$conn = mysqli_connect($servername, $username, $password);
+$manager = new MongoDB\Driver\Manager("mongodb://localhost:27017");
 //
 // Check connection
- if (!$conn) {
-   die("Connection failed: " . mysqli_connect_error());
+ if (!$manager) {
+   die("Connection failed: ");
    }
-   echo "SQL connected successfully! <br>";
-   echo "Server Info: ". mysqli_get_server_info($conn);
+   echo "Mongo connected successfully! <br>";
+   echo "Server Info: ";
 ?>

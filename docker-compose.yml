@@ -33,12 +33,14 @@ services:
                 networks: 
                         - myproject
         adminer:
-                image: adminer
+                #image: adminer
+                build: ./src/adminer
                 restart: always
                 ports:
                         - 8080:8080
                 networks: 
                         - myproject
+                comand: bash -c "pecl install mongodb && echo /usr/local/etc/php/conf.d/docker-php-ext-mongodb.ini"
         nginx:
                 image: nginx
                 restart: always
