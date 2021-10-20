@@ -1,52 +1,54 @@
 version: "3.3"
 
 services:
-        db:
-                image: mariadb:latest
-                #restart: always
+        mongodb:
+                image: mongo
+                volumes:
+                - "./mongodb/db:/data/db"
+                ports:
+                - "27017:27017"
                 environment:
-                        MYSQL_ROOT_PASSWORD: admin_123
-                        MYSQL_DATABASE: project
-                        MYSQL_USER: wang
-                        MYSQL_PASSWORD: wang
-                ports: 
-                        - 3306:3306
+                        MONGO_INITDB_DATABASE: test
+                        MONGO_INITDB_ROOT_USERNAME: root
+                        MONGO_INITDB_ROOT_PASSWORD: 1234
                 networks:
                         - myproject
-        
         redis:
-                image: redis:latest
-                #restart: always
+                image: redis
+                restart: always
                 ports: 
                         - 6379:6379
                 networks:
                         - myproject
-        
-        nodejs:
-                image: node:latest
-                user: "node"
-                #restart: always
-                working_dir: /usr/local/service
-                environment:
-                        - NODE_ENV=production
+        php:
+                build: ./src/php
                 volumes:
-                        - ./nodejs:/usr/local/service
-                ports:  
-                        - 8888:8888
-                networks:
+                        - $HOME/3208project/src:/var/www/html
+                restart: always
+                expose:
+                        - "9000"
+                depends_on:
+                        - mongodb
+                        - redis
+                networks: 
                         - myproject
-                command: "npm start"
-
+        adminer:
+                image: adminer
+                restart: always
+                ports:
+                        - 8080:8080
+                networks: 
+                        - myproject
         nginx:
-                image: nginx:latest
-                #restart: always
+                image: nginx
+                restart: always
                 volumes:
                         - $HOME/3208project/src:/var/www/html
                         - $HOME/3208project/nginx.ini:/etc/nginx/conf.d/default.conf
                 depends_on:
                         - db
                         - redis
-                        - nodejs
+                        - php
                 ports:
                         - 80:80
                 networks:
