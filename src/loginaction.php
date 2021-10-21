@@ -12,7 +12,7 @@ if (!empty($username) && !empty($password)) {
         WHERE "username" = '$username' AND "password" = '$password';
     EOF;
     $ret = pg_query($db, $sql_select);
-    echo($ret);
+    #echo($ret);
     $row = pg_fetch_array($ret); 
     echo($row);
     if ($username == $row['username'] && $password == $row['password']) 
