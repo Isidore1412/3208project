@@ -2,8 +2,8 @@
 $conn  =  "host=postgres port=5432 dbname=myphp user=root password=root123" ; 
 $db = pg_connect($conn);
 if (!$db) 
-    echo "连接失败！！！！！/r/n";
+    echo "db can not connect";
 else 
-    echo "连接成功！！！！！/r/n";
+    echo "db connect succeed!";
     pg_close($db);
 ?>  
