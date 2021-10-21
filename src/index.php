@@ -5,7 +5,7 @@
         <meta charset="UTF-8">
     </head>
     <body>
-        <?php
+        <!--php
             $conn  =  "host=postgres port=5432 dbname=myphp user=root password=root123" ; 
             $db = pg_connect($conn);
             $sql1 = "SELECT * FROM USER";
@@ -14,8 +14,8 @@
                 $sql =<<<EOF
                     CREATE TABLE USER
                     (USERNAME TEXT PRIMARY KEY NOT NULL,
-                    EMAIL  CHAR(50)  NOT NULL,
-                    PASSWORD CHAR(16)   NOT NULL);
+                    EMAIL CHAR(50) NOT NULL,
+                    PASSWORD CHAR(16) NOT NULL);
                 EOF;
                 $ret = pg_query($db, $sql);
                 pg_close($db);
@@ -23,7 +23,7 @@
                 pg_close($db);
             }        
             
-        ?>
+        -->
         <a href="register.php"> Signin</a>
         <a href="login.php"> Login</a>
 
