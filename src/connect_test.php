@@ -10,8 +10,7 @@
         CREATE TABLE IF NOT EXISTS "user" (
         username TEXT PRIMARY KEY NOT NULL UNIQUE,
         email CHAR(50) NOT NULL,
-        password CHAR(16) NOT NULL;
-        );
+        password CHAR(16) NOT NULL);
     EOF;
     $ret = pg_query($db, $sql);
 
