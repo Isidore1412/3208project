@@ -23,10 +23,10 @@
         $create_booking =<<<EOF
             CREATE TABLE IF NOT EXISTS "booking" (
             name TEXT PRIMARY KEY NOT NULL UNIQUE,
-            student_num INT(8) NOT NULL,
+            student_num INT NOT NULL,
             email CHAR(50) NOT NULL,
             date DATE NOT NULL,
-            seat_num INT(556) NOT NULL);       
+            seat_num INT NOT NULL);       
         EOF;
 
         $user = pg_query($db, $create_user);
