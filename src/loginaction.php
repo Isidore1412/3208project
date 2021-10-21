@@ -11,11 +11,9 @@ if (!empty($username) && !empty($password)) {
         SELECT "username","password" FROM "user" 
         WHERE "username" = '$username' AND "password" = '$password';
     EOF;
-    $ret = pg_query($db, $sql_select);
-    #echo($ret);
-    $row = pg_fetch_array($ret); 
-    echo($row);
-    if ($username == $row['username'] && $password == $row['password']) 
+    $data = pg_query($db, $sql_select);
+    $login_check = pg_num_rows($data); 
+    if ($login_check > 0) 
     { 
         header("Location:index.php");    
     } else{
