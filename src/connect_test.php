@@ -7,10 +7,10 @@
         echo "db connect succeed!";
 
     $sql =<<<EOF
-        CREATE TABLE USER(
-        USERNAME TEXT PRIMARY KEY NOT NULL,
-        EMAIL CHAR(50) NOT NULL,
-        PASSWORD CHAR(16) NOT NULL);
+        CREATE TABLE IF NOT EXISTS user (
+        username TEXT PRIMARY KEY NOT NULL UNIQUE,
+        email CHAR(50) NOT NULL,
+        password CHAR(16) NOT NULL);
     EOF;
 
     $ret = pg_query($db, $sql);
