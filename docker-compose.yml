@@ -6,6 +6,12 @@ services:
                 restart: always
                 environment:
                         POSTGRES_PASSWORD: root123
+                        POSTGRES_USER: root
+                        POSTGRES_DB: myphp
+                ports:
+                        - "5432:5432"
+                volumes:
+                        - ./postgres:/var/lib/postgresql/data
                 networks:
                         - myproject
         redis:
