@@ -1,5 +1,5 @@
 <?php
-$conn  =  "host=localhost port=5432 dbname=myphp user=root password=root123" ; 
+$conn  =  "host=postgres port=5432 dbname=myphp user=root password=root123" ; 
 $db = pg_connect($conn);
 if (!$db) 
     echo "连接失败！！！！！/r/n";
