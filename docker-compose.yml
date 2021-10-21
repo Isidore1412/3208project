@@ -1,16 +1,11 @@
 version: "3.3"
 
 services:
-        mongodb:
-                image: mongo
-                volumes:
-                - "./mongodb/db:/data/db"
-                ports:
-                - "27017:27017"
+        postgres:
+                image: postgres
+                restart: always
                 environment:
-                        MONGO_INITDB_DATABASE: test
-                        MONGO_INITDB_ROOT_USERNAME: root
-                        MONGO_INITDB_ROOT_PASSWORD: 1234
+                        POSTGRES_PASSWORD: root123
                 networks:
                         - myproject
         redis:
@@ -33,14 +28,13 @@ services:
                 networks: 
                         - myproject
         adminer:
-                #image: adminer
-                build: ./src/adminer
+                image: adminer
+                #build: ./src/adminer
                 restart: always
                 ports:
                         - 8080:8080
                 networks: 
                         - myproject
-                #command: bash -c "pecl install mongodb && echo /usr/local/etc/php/conf.d/docker-php-ext-mongodb.ini"
         nginx:
                 image: nginx
                 restart: always
@@ -48,7 +42,7 @@ services:
                         - $HOME/3208project/src:/var/www/html
                         - $HOME/3208project/src/nginx.ini:/etc/nginx/conf.d/default.conf
                 depends_on:
-                        - mongodb
+                        - postgres
                         - redis
                         - php
                 ports:
