@@ -7,7 +7,7 @@
     $db = pg_connect($conn);
 
     $sql_select =<<<EOF
-    SELECT "username" FROM "user" WHERE "username" = '$username'";
+        SELECT "username" FROM "user" WHERE "username" = '$username';
     EOF;
     $ret = pg_query($db, $sql_select);
     $row = pg_fetch_array($ret); 
@@ -21,7 +21,7 @@
     EOF;
         pg_query($db, $sql_insert);
     } 
-    pg_close($conn);
+    pg_close($db);
     
 
 ?>

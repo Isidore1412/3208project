@@ -8,7 +8,7 @@ if (!empty($username) && !empty($password)) {
     
     $sql_select =<<<EOF
         SELECT "username","password" FROM "user" 
-        WHERE "username" = '$username' AND "password" = '$password'";
+        WHERE "username" = '$username' AND "password" = '$password';
     EOF;
     $ret = pg_query($db, $sql_select);
     $row = pg_fetch_array($ret); 
