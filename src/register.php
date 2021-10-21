@@ -37,11 +37,7 @@
                             $err = isset($_GET["err"]) ? $_GET["err"] : "";
                             switch ($err) {
                                 case 1:
-                                    echo "用户名或密码错误！";
-                                    break;
-
-                                case 2:
-                                    echo "用户名或密码不能为空！";
+                                    echo "用户名已经存在！";
                                     break;
                             } 
                         ?> 
