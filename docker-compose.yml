@@ -23,7 +23,7 @@ services:
                 expose:
                         - "9000"
                 depends_on:
-                        - mongodb
+                        - postgres
                         - redis
                 networks: 
                         - myproject
