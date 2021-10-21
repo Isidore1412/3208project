@@ -2,6 +2,7 @@
 
 $username = $_POST['username'];
 $password = $_POST['password']; 
+
 if (!empty($username) && !empty($password)) { 
     $conn  =  "host=postgres port=5432 dbname=myphp user=root password=root123" ; 
     $db = pg_connect($conn); 

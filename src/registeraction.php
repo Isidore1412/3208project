@@ -17,7 +17,7 @@
     } else { 
     $sql_insert =<<<EOF
         INSERT INTO "user"("username","email","password") 
-        VALUES('$username','$password','$email');
+        VALUES('$username','$email','$password');
     EOF;
         pg_query($db, $sql_insert);
     } 
