@@ -9,17 +9,18 @@
     $sql_select =<<<EOF
         SELECT "username" FROM "user" WHERE "username" = '$username';
     EOF;
-    $ret = pg_query($db, $sql_select);
-    $row = pg_fetch_array($ret); 
+    $data = pg_query($db, $sql_select);
+    $register_check = pg_num_rows($data); 
     
-    if ($username == $row['username']) { 
+    if ($register_check > 0) { 
         header("Location:register.php?err=1");
     } else { 
-    $sql_insert =<<<EOF
-        INSERT INTO "user"("username","email","password") 
-        VALUES('$username','$email','$password');
-    EOF;
+        $sql_insert =<<<EOF
+            INSERT INTO "user"("username","email","password") 
+            VALUES('$username','$email','$password');
+        EOF;
         pg_query($db, $sql_insert);
+        header("Location:login.php"); 
     } 
     pg_close($db);
     

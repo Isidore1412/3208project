@@ -1,13 +1,5 @@
 <!doctype html>
 <html lang="en">
-
- <body>
-  
-   
-
-
- </body>
-
     <head>
         <title>Register</title>
         <meta name="content-type"; charset="UTF-8">
@@ -30,14 +22,13 @@
                         <td>Password ：</td> 
                         <td><input type="password" id="password" name="password"></td> 
                     </tr> 
-
                     <tr> 
-                        <td colspan="2" align="center" style="color:red;font-size:10px;"> <!--提示信息--> 
+                        <td colspan="2" align="center" style="color:red;font-size:10px;">
                         <?php
                             $err = isset($_GET["err"]) ? $_GET["err"] : "";
                             switch ($err) {
                                 case 1:
-                                    echo "用户名已经存在！";
+                                    echo "Username already exists!";
                                     break;
                             } 
                         ?> 
@@ -49,7 +40,7 @@
                         </td> 
                     </tr> 
                     <tr> 
-                        <td colspan="2" align="center"> 已有账号，快去<a href="login.php">登陆</a>吧</td>
+                        <td colspan="2" align="center"> Already have an account, <a href="login.php">log in</a>now!</td>
                     </tr> 
                 </table> 
             </form> 

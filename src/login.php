@@ -12,24 +12,23 @@
                 <table border="0"> 
                     <tr> 
                         <td>User name ：</td> 
-                        <td> <input type="text" id="name" name="username" required="required" value="<?php echo isset($_COOKIE[""]) ? $_COOKIE[""] : ""; ?>"> </td> 
+                        <td> <input type="text" id="name" name="username" required="required"> </td> 
                     </tr> 
                     <tr> 
                         <td>Password ：</td> 
-                        <td><input type="password" id="password" name="password"></td> 
+                        <td><input type="password" id="password" name="password" required="required"></td> 
                     </tr> 
 
                     <tr> 
-                        <td colspan="2" align="center" style="color:red;font-size:10px;"> <!--提示信息--> 
+                        <td colspan="2" align="center" style="color:red;font-size:10px;">
                         <?php
                             $err = isset($_GET["err"]) ? $_GET["err"] : "";
                             switch ($err) {
                                 case 1:
-                                    echo "用户名或密码错误！";
+                                    echo "Wrong username or password!";
                                     break;
-
                                 case 2:
-                                    echo "用户名或密码不能为空！";
+                                    echo "User name or password cannot be empty!";
                                     break;
                             } 
                         ?> 
@@ -41,7 +40,7 @@
                         </td> 
                     </tr> 
                     <tr> 
-                        <td colspan="2" align="center"> 还没有账号，快去<a href="register.php">注册</a>吧</td>
+                        <td colspan="2" align="center"> Don't have an account yet, go to <a href="register.php">register</a>!</td>
                     </tr> 
                 </table> 
             </form> 

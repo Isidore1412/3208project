@@ -15,7 +15,7 @@ if (!empty($username) && !empty($password)) {
     $login_check = pg_num_rows($data); 
     if ($login_check > 0) 
     { 
-        header("Location:index.php");    
+        header("Location:index_login.php");    
     } else{
         echo "Wrong!";
     }
