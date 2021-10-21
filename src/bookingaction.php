@@ -1,5 +1,5 @@
 <?php
-    $name = $_POST['username'];
+    $name = $_POST['name'];
     $student_num = $_POST['student_num'];   
     $email =$_POST['email'];
     $date =$_POST['date'];
@@ -23,6 +23,7 @@
             VALUES('$name','$student_num','$email','$date','$seat_num');
         EOF;
             pg_query($db, $sql_insert);
+        echo("succeed!");
     } 
     pg_close($db);
 ?>
