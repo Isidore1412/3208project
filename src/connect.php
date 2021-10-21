@@ -1,15 +1,9 @@
 <?php
-$servername = "mongo";
-$username = "php";
-$password = "php";
-
-
-// Check connection
- //if (!$manager) {
-   //die("Connection failed: ");
-   //}
-echo "Mongo connected successfully! <br>";
-echo "Server Info: ";
-   
-
-?>
+$conn  =  "host=localhost port=5432 dbname=myphp user=root password=root123" ; 
+$db = pg_connect($conn);
+if (!$db) 
+    echo "连接失败！！！！！/r/n";
+else 
+    echo "连接成功！！！！！/r/n";
+    pg_close($db);
+?>  
