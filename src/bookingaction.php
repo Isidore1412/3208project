@@ -16,13 +16,13 @@
     $booking_check = pg_num_rows($data); 
     
     if ($booking_check > 0) { 
-        header("Location:booking.php");
+        header("Location:booking.php?err=1");
     } else { 
         $sql_insert =<<<EOF
-            INSERT INTO "booking"("name","student_num","email","date","seat_num") 
+            INSERT INTO "booking" ("name","student_num","email","date","seat_num") 
             VALUES('$name','$student_num','$email','$date','$seat_num');
         EOF;
-            pg_query($db, $sql_insert);
+        pg_query($db, $sql_insert);
         echo("succeed!");
     } 
     pg_close($db);
